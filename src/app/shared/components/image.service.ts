@@ -25,14 +25,14 @@ export class ImageService {
     formData.append("title", title);
     // Correct URL interpolation
     return this.http.post<BlogImage>(
-      `${this.apiBaseUrl}Images?fileName=${fileName}&title=${title}`,
+      `${this.apiBaseUrl}Images/UploadImage?fileName=${fileName}&title=${title}`,
       formData
     );
 
     //  return this.http.post<BlogImage>($'{this.apiBaseUrl}Images?fileName={fileName}&title={file}', formData);
   }
   getImages(): Observable<BlogImage[]> {
-    return this.http.get<BlogImage[]>(this.apiBaseUrl + 'Images');
+    return this.http.get<BlogImage[]>(this.apiBaseUrl + 'Images/GetAllBlogImages');
   }
   selectImage(image: BlogImage): void {
     this.selectedImage.next(image);

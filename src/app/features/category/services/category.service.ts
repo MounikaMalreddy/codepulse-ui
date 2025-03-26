@@ -14,7 +14,7 @@ export class CategoryService {
   constructor(private http: HttpClient) {
   }
   addCategory(model: AddCategoryRequest): Observable<void> {
-    return this.http.post<void>(this.APIBaseURL, model);
+    return this.http.post<void>(this.APIBaseURL+'AddCategory', model);
   }
   getCategories(filterQuery?: string, sortBy?: string, sortDirection?: string,
     pageNumber?:number,pageSize?:number): Observable<Category[]> {
@@ -43,10 +43,10 @@ export class CategoryService {
 
   }
   getCategoryById(categoryId: string): Observable<Category> {
-    return this.http.get<Category>(this.APIBaseURL + categoryId);
+    return this.http.get<Category>(this.APIBaseURL+'GetCategoryById/' + categoryId);
   }
   updateCategory(categoryId: string, request: AddCategoryRequest): Observable<Category> {
-    return this.http.put<Category>(this.APIBaseURL + categoryId, request)
+    return this.http.put<Category>(this.APIBaseURL +'UpdateCategoryById/'+ categoryId, request)
   }
   DeleteCategoryById(categoryId: string): Observable<Category> {
     return this.http.delete<Category>(this.APIBaseURL + 'DeleteCategory/' + categoryId);

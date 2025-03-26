@@ -14,19 +14,19 @@ export class BlogpostService {
   constructor(private http: HttpClient) { }
 
   AddBlogPost(request: AddBlogPostRequest): Observable<void> {
-    return this.http.post<void>(this.apiBaseurl, request);
+    return this.http.post<void>(this.apiBaseurl+'AddBlogPost', request);
   }
   GetAllBlogPosts(): Observable<BlogPost[]> {
-    return this.http.get<BlogPost[]>(this.apiBaseurl);
+    return this.http.get<BlogPost[]>(this.apiBaseurl+'GetAllBlogPosts');
   }
   GetBlogPostById(id: string): Observable<BlogPost> {
-    return this.http.get<BlogPost>(this.apiBaseurl + id);
+    return this.http.get<BlogPost>(this.apiBaseurl+'GetBlogPostById/' + id);
   }
   UpdateBlogPost(id: string, request: UpdateBlogPostRequest): Observable<BlogPost> {
-    return this.http.put<BlogPost>(this.apiBaseurl + id, request);
+    return this.http.put<BlogPost>(this.apiBaseurl+'UpdateBlogPostById/' + id, request);
   }
   deleteBlogPost(id: string): Observable<BlogPost> {
-    return this.http.delete<BlogPost>(this.apiBaseurl + id);
+    return this.http.delete<BlogPost>(this.apiBaseurl+'DeleteBlogPost/' + id);
   }
   getBlogPostByUrlHandle(urlHandle:string):Observable<BlogPost>{
     return this.http.get<BlogPost>(this.apiBaseurl+'GetBlogPostByUrlHandle/'+urlHandle);

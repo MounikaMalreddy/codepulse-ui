@@ -14,7 +14,7 @@ export class CategoryListComponent implements OnInit {
   totalCount!:number;
   list:number[]=[];
   pageNumber:number=1;
-  pageSize:number=5;
+  pageSize:number=10;
 
   constructor(private categoryService: CategoryService) {
   }
